@@ -1,7 +1,7 @@
 import streamlit as st
 
-def home():
-    st.title("Nourishnet")
+# def home():
+#     st.title("Nourishnet")
 
    
 def main():

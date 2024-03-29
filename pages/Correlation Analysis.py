@@ -11,7 +11,7 @@ def load_data(file_path1, file_path2):
 
 # Main function to create UI and plot graph
 def main():
-    st.title("Malnutrition Analysis")
+    st.title("Correlation Analysis")
 
     # Update the file paths below
     file_path1 = "data1.csv"  # Update with the file path for Table 1
