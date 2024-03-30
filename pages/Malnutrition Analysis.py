@@ -22,11 +22,12 @@ def main():
     # Sidebar for user input
     st.sidebar.title("Filter Options")
     selected_countries = st.sidebar.multiselect("Select Countries", df['Country Name'].unique())
-    selected_gender = st.sidebar.selectbox("Select Gender", df['Sex'].unique())
+    gender_mapping = {0: "Male", 1: "Female", 999: "Both"}  # Mapping numeric values to labels
+    selected_gender = st.sidebar.selectbox("Select Gender", [gender_mapping[gender_code] for gender_code in sorted(df['Sex'].unique())])
     selected_y_axis = st.sidebar.selectbox("Select Y-axis", ['Overweight', 'Stunting', 'Wasting', 'Mean'], index=3)  # Default to 'Mean' for y-axis
 
     # Filter data based on user selection
-    filtered_df = df[(df['Country Name'].isin(selected_countries)) & (df['Sex'] == selected_gender)]
+    filtered_df = df[(df['Country Name'].isin(selected_countries)) & (df['Sex'] == list(gender_mapping.keys())[list(gender_mapping.values()).index(selected_gender)])]
 
     # Plot dynamic graph
     st.header("Dynamic Analysis Graph")
